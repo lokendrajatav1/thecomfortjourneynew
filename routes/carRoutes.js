@@ -35,6 +35,7 @@ router.post("/", upload.single("image"), async (req, res) => {
         selfdrive,
         clock,
         location,
+        offer,
     } = req.body;
     const car = new Car({
         name,
@@ -47,6 +48,7 @@ router.post("/", upload.single("image"), async (req, res) => {
         selfdrive,
         clock,
         location,
+        offer,
         image: req.file.filename,
     });
     await car.save();
@@ -71,6 +73,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
         cooling: req.body.cooling,
         selfdrive: req.body.selfdrive,
         clock: req.body.clock,
+        offer: req.body.offer,
         location:req.body.location,
     };
     if (req.file) {

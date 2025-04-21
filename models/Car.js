@@ -11,6 +11,7 @@ const carSchema = new mongoose.Schema({
     cooling: String,
     selfdrive: String,
     location:String,
+    offer: String,
     image: String,
     isBooked: { type: Boolean, default: false },
 });

@@ -13,6 +13,10 @@ import { fileURLToPath } from 'url';
 
 import authMiddleware from "./middleware/authMiddleware.js";
 
+import offerRoutes from './routes/offerRoutes.js';
+
+import carRegisterRoutes from './routes/carRegisterRoute.js';
+
 import booking from "./routes/bookingRoutes.js";
 // import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -45,7 +49,14 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Middleware for serving static files from the "public/dist" directory
 // This is important for serving the frontend build files
 // ⬇️ ADD THIS before app.listen()
-// app.use(express.static(path.join(__dirname, 'public/dist')));
+
+
+
+
+app.use(express.static(path.join(__dirname, 'public/dist')));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/dist/", "index.html"));
+});
 
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'public/dist/index.html'));
@@ -54,12 +65,15 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // ✅ Proper CORS middleware setup
-app.use(cors({
-  origin: 'http://localhost:5173', // Adjust for your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: 'http://localhost:5173', // Adjust for your frontend URL
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
+
+
+
 
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
@@ -67,6 +81,10 @@ app.use("/uploads", express.static("uploads"));
 
 //middleware for admin routes
 app.use("/api/v1/admin", adminRoutes);
+app.use('/api/offers', offerRoutes);
+
+app.use('/api/v1/car', carRegisterRoutes);
+
 
 
 

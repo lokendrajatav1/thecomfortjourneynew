@@ -6,9 +6,9 @@ export const getCars = async (req, res) => {
 };
 
 export const addCar = async (req, res) => {
-  const { name, price, fuel,seat, cartype, cooling, selfdrive,clock,location} = req.body;
+  const { name, price, fuel,seat, cartype, cooling, selfdrive,clock,location,offer} = req.body;
   const image = req.file.filename;
-  const car = new Car({ name, price, fuel,seat, cartype, cooling, selfdrive,clock,location, image });
+  const car = new Car({ name, price, fuel,seat, cartype, cooling, selfdrive,clock,location,offer, image });
   await car.save();
   res.json({ message: "Car added successfully" });
 };
