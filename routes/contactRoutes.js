@@ -1,6 +1,7 @@
-const express = require("express");
-const { createContact, getAllContacts } = require("../controllers/contactController");
-const { default: authMiddleware } = require("../middleware/authMiddleware");
+import express from "express";
+import  { createContact, getAllContacts } from "../controllers/contactController.js";
+
+import authMiddleware from "../middleware/authMiddleware.js";
 
 
 const router = express.Router();
@@ -8,4 +9,4 @@ const router = express.Router();
 router.post("/add", createContact);
 router.get("/all" , getAllContacts);
 
-module.exports = router;
+export default router;

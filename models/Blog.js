@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema({
     heading: String,
@@ -6,4 +6,4 @@ const blogSchema = new mongoose.Schema({
     image: String
 }, { timestamps: true });
 
-module.exports = mongoose.model("Blog", blogSchema);
+export default mongoose.model("Blog", blogSchema);

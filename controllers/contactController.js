@@ -1,7 +1,7 @@
-const Contact = require("../models/Contact");
+import Contact  from "../models/contact.js";
 
 // Create a new contact
-const createContact = async (req, res) => {
+export const createContact = async (req, res) => {
     try {
         const { name, email, phone, message } = req.body;
         const newContact = new Contact({ name, email, phone, message });
@@ -13,7 +13,7 @@ const createContact = async (req, res) => {
 };
 
 // Fetch all contacts
-const getAllContacts = async (req, res) => {
+export const getAllContacts = async (req, res) => {
     try {
         const contacts = await Contact.find().sort({ createdAt: -1 });
         res.json(contacts);
@@ -22,4 +22,4 @@ const getAllContacts = async (req, res) => {
     }
 };
 
-module.exports = { createContact, getAllContacts };
+

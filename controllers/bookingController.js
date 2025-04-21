@@ -1,7 +1,7 @@
-const Booking = require("../models/Booking");
+import Booking from "../models/Booking.js";
 
 // Create a new booking
-const createBooking = async (req, res) => {
+export const createBooking = async (req, res) => {
     try {
         const newBooking = new Booking(req.body);
         await newBooking.save();
@@ -12,7 +12,7 @@ const createBooking = async (req, res) => {
 };
 
 // Get all bookings
-const getBookings = async (req, res) => {
+export const getBookings = async (req, res) => {
     try {
         const bookings = await Booking.find();
         res.status(200).json(bookings);
@@ -22,7 +22,7 @@ const getBookings = async (req, res) => {
 };
 
 // Update booking status
-const updateBookingStatus = async (req, res) => {
+export const updateBookingStatus = async (req, res) => {
     try {
         const { id } = req.params;
         const { status } = req.body;
@@ -46,4 +46,4 @@ const updateBookingStatus = async (req, res) => {
     }
 };
 
-module.exports = { createBooking, getBookings, updateBookingStatus };
+
