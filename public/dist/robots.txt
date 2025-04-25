@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /images/
+Allow: /assets/
+Disallow: /private/
+Sitemap: https://thecomfortjourney.com/sitemap.xml
