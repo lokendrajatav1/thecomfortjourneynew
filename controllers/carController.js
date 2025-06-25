@@ -18,4 +18,16 @@ export const deleteCar = async (req, res) => {
   res.json({ message: "Car deleted" });
 };
 
-// Booking logic removed!
+export const reorderCars = async (req, res) => {
+  const orderUpdates = req.body;
+  for (const item of orderUpdates) {
+    await Car.findByIdAndUpdate(item._id, { order: item.order });
+  }
+  res.json({ success: true });
+};
+
+
+
+
+
+

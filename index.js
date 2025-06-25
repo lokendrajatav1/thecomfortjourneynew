@@ -1,5 +1,4 @@
 import express from 'express';
-
 import cors from 'cors';
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
@@ -7,26 +6,23 @@ import carRoutes from './routes/carRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-
+import authRoutes from './routes/authRoutes.js';
 
 // const carRoutes =require("./routes/carRoutes.js");
 
-import authMiddleware from "./middleware/authMiddleware.js";
-
+import {authMiddleware} from "./middleware/authMiddleware.js";
+import userRoutes from './routes/userRoutes.js';
 import offerRoutes from './routes/offerRoutes.js';
-
 import carRegisterRoutes from './routes/carRegisterRoute.js';
-
 import booking from "./routes/bookingRoutes.js";
 // import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-
 import contactRoutes from "./routes/contactRoutes.js";
-
 // import carRoutes from "./routes/car.routes.js";
 import bookingRoutes from "./routes/booking.routes.js";
-
 import  blogRoutes from "./routes/blogRoutes.js";
+import ratingRoutes from "./routes/ratingRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +37,7 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -78,29 +75,17 @@ app.use("/uploads", express.static("uploads"));
 
 
 //middleware for admin routes
+app.use('/api/user', userRoutes);
+app.use("/api/v1/notifications", notificationRoutes); // ✅ enable notifications
+app.use("/api/rating", ratingRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use('/api/offers', offerRoutes);
-
 app.use('/api/v1/car', carRegisterRoutes);
-
-
-
-
 app.use("/api/v1/blogs",blogRoutes);
-
-
 app.use('/api/v1/cars', carRoutes);
-
 app.use("/api/v1/carsnew",carRoutes);
 app.use("/api/v1/bookingsnew",bookingRoutes); 
-
-
 app.use("/api/v1/contact", contactRoutes);
-
-
-
-
-
 app.use("/api/v1/bookings", booking);
 
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const carRegisterSchema = new mongoose.Schema({
-  carName: String,
+  carName:  String,
   model: String,
   numberPlate: String,
   fuelType: String,
