@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
 
 
 
-app.use(express.json());
+
 app.use("/uploads", express.static("uploads"));
 
 
