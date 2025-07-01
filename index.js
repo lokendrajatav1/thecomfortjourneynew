@@ -71,7 +71,7 @@ app.get("/", (req, res) => {
 
 
 
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
 
 
 //middleware for admin routes
