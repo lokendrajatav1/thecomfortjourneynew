@@ -21,7 +21,7 @@ import contactRoutes from "./routes/contactRoutes.js";
 // import carRoutes from "./routes/car.routes.js";
 import bookingRoutes from "./routes/booking.routes.js";
 import  blogRoutes from "./routes/blogRoutes.js";
-import ratingRoutes from "./routes/ratingRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -77,7 +77,7 @@ app.use("/uploads", express.static("uploads"));
 //middleware for admin routes
 app.use('/api/user', userRoutes);
 app.use("/api/v1/notifications", notificationRoutes); // ✅ enable notifications
-app.use("/api/rating", ratingRoutes);
+app.use("/api/v1/reviews", reviewRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use('/api/offers', offerRoutes);
 app.use('/api/v1/car', carRegisterRoutes);
