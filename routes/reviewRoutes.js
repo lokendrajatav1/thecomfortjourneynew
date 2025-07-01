@@ -1,18 +1,19 @@
 import express from "express";
 import {
   addReview,
-  getReviews,
-  updateReviewStatus,
+  getAllReviews,
   updateReview,
+  updateReviewStatus,
   deleteReview,
 } from "../controllers/reviewController.js";
 
 const router = express.Router();
 
-router.post("/add", addReview);
-router.get("/", getReviews); // Optional: /?status=Accepted
-router.put("/status/:id", updateReviewStatus); // Accept/Reject
-router.put("/update/:id", updateReview); // Edit content
+// Correct routes
+router.post("/", addReview);
+router.get("/", getAllReviews);
+router.put("/update/:id", updateReview);
+router.put("/status/:id", updateReviewStatus);
 router.delete("/delete/:id", deleteReview);
 
 export default router;

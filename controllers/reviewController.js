@@ -13,7 +13,7 @@ export const addReview = async (req, res) => {
 };
 
 // Get all reviews (optional: filter by status)
-export const getReviews = async (req, res) => {
+export const getAllReviews = async (req, res) => {
   try {
     const { status } = req.query;
     const query = status ? { status } : {};
