@@ -14,7 +14,7 @@ import {authMiddleware} from "./middleware/authMiddleware.js";
 import userRoutes from './routes/userRoutes.js';
 import offerRoutes from './routes/offerRoutes.js';
 import carRegisterRoutes from './routes/carRegisterRoute.js';
-import booking from "./routes/bookingRoutes.js";
+// import booking from "./routes/bookingRoutes.js";
 // import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
@@ -86,7 +86,7 @@ app.use('/api/v1/cars', carRoutes);
 app.use("/api/v1/carsnew",carRoutes);
 app.use("/api/v1/bookingsnew",bookingRoutes); 
 app.use("/api/v1/contact", contactRoutes);
-app.use("/api/v1/bookings", booking);
+// app.use("/api/v1/bookings", booking);
 
 
 

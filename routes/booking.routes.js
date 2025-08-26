@@ -29,6 +29,7 @@ import {
 } from "../controllers/booking.controller.js";
 
 import { authMiddleware } from "../middleware/authMiddleware.js";
+import adminauthMiddleware from "../middleware/adminauthMiddleware.js";
 
 // 🧑‍💼 Admin Routes
 router.get("/all", getAllBookings);                 // Admin: view all bookings
