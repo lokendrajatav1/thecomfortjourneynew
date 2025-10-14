@@ -17,6 +17,21 @@ export const getAllBookings = async (req, res) => {
   }
 };
 
+// @desc    Get all public booking statuses
+// @route   GET /api/v1/bookingsnew/public
+// @access  Public
+export const getPublicBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find()
+      .select("carId status") // 🔒 Select only carId and status
+      .populate("carId", "name image") // Populate only car name and image
+      .sort({ createdAt: -1 });
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch public bookings", error });
+  }
+};
+
 
 
 

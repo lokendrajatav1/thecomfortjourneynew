@@ -33,9 +33,16 @@ export const loginAdmin = async (req, res) => {
         const isMatch = await bcrypt.compare(password, admin.password);
         if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        // ✅ Use `adminId` to match the adminauthMiddleware check
+        const token = jwt.sign({ adminId: admin._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        res.json({ token, admin });
+        // 🔒 Never send the password back to the client
+        const adminData = {
+            _id: admin._id,
+            name: admin.name,
+            email: admin.email,
+        };
+        res.json({ token, admin: adminData });
     } catch (error) {
         res.status(500).json({ message: "Server error" });
     }

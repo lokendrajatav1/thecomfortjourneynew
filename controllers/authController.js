@@ -7,8 +7,6 @@ import User from '../models/User.js';
 import { generateOTP, sendOTP as sendOTPtoPhone } from '../utils/otpService.js';
 import { sendOTPEmail } from '../utils/otpService.js'; // 👈 sendOTPEmail is a new helper
 
-const JWT_SECRET = process.env.JWT_SECRET || 'secretkey';
-
 // 🔐 Normalize phone number
 const normalizePhone = (phone) => {
   const raw = phone.replace(/\D/g, "");
@@ -135,7 +133,7 @@ export const verifyOTP = async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id, phone: user.phone },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
 
@@ -242,7 +240,7 @@ export const verifyEmailOTP = async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id, email: user.email },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
 

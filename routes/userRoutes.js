@@ -10,6 +10,7 @@ import {
 } from "../controllers/userController.js";
 import {authMiddleware} from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/upload.js";
+import adminauthMiddleware from "../middleware/adminauthMiddleware.js";
 
 const router = express.Router();
 
@@ -25,12 +26,12 @@ router.put(
 );
 
 // Admin route to get all users
-router.get("/all", getAllUsers);
+router.get("/all", adminauthMiddleware, getAllUsers);
 
 // DELETE a single user
-router.delete("/:id", deleteUser);
+router.delete("/:id", adminauthMiddleware, deleteUser);
 
 // ✅ Bulk delete users
-router.post("/bulk-delete", bulkDeleteUsers);
+router.post("/bulk-delete", adminauthMiddleware, bulkDeleteUsers);
 
 export default router;
